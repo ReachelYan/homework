@@ -1,0 +1,114 @@
+body {
+  background-color: #f1f1f1;
+  padding: 0;
+  margin: 0;
+}
+* {
+  margin: 0;
+}
+#wrapper {
+  width: 1240px;
+  margin: 0 auto;
+}
+li {
+  list-style: none;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+#header {
+  height: 50px;
+  line-height: 50px;
+  background-color: #ccc;
+}
+.icons {
+  float: right;
+}
+.icons li {
+  float: left;
+  margin-right: 10px;
+}
+#banner {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+#banner .image {
+  width: 100%;
+  height: auto;
+}
+#banner .content {
+  background-color: #fff;
+}
+
+.actions {
+  text-align: end;
+}
+p {
+  margin: 10px 0;
+  line-height: 30px;
+}
+.major {
+  margin-top: 50px;
+  text-align: center;
+}
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+}
+.posts article {
+  flex: 20%;
+  background-color: #fff;
+  padding: 10px 20px;
+}
+.features {
+  margin-top: 30px;
+  display: flex;
+}
+.features article {
+  text-align: center;
+  margin: 0 10px;
+  background-color: #f1f1f1;
+}
+
+.posts {
+  text-align: center;
+}
+.posts article {
+  margin: 10px 0;
+}
+.posts article p {
+  background-color: #f1f1f1;
+}
+
+#menu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#menu ul li {
+  padding: 10px 20px;
+}
+.contact {
+  display: flex;
+  justify-content: space-between;
+}
+#footer p {
+  margin-top: 20px;
+  width: 100%;
+}
+#footer .copyright {
+  display: inline-block;
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+.button {
+  color: #e3ba84;
+}
+h2 {
+  font-size: 40px;
+}
