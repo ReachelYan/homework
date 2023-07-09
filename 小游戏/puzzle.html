@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>迷宫游戏</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #maze {
+            position: relative;
+            height: 50vh;
+            width: 50vh;
+            border: 1px solid black;
+        }
+        .wall {
+            background-color: black;
+            position: absolute;
+        }
+        .player {
+            position: absolute;
+            width: 10%;
+            height: 10%;
+        }
+        #player1 {
+            background-color: green;
+        }
+        #player2 {
+            background-color: blue;
+        }
+        #exit {
+            position: absolute;
+            right: 0;
+            width: 10%;
+            height: 10%;
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="maze">
+        <div id="player1" class="player"></div>
+        <div id="player2" class="player"></div>
+        <div id="exit"></div>
+    </div>
+
+    <script>
+       var maze = [
+    [0, 0, 0, 1, 0, 1, 1, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+    [1, 0, 1, 1, 0, 1, 0, 1, 1, 0],
+    [0, 0, 0, 1, 0, 1, 1, 0, 1, 1],
+    [1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+    [1, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
+    [0, 0, 1, 0, 0, 0, 1, 0, 1, 0],
+    [0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 0, 1, 1, 1, 0],
+   
+];
+
+       var player1Pos = { x: 0, y: 0 };
+       var player2Pos = { x: 9, y: 0 };
+       var exitPos = { x: 9, y: 9 };
+
+        for(var i = 0; i < maze.length; i++) {
+            for(var j = 0; j < maze[i].length; j++) {
+                var cell = document.createElement('div');
+                cell.style.width = '10%';
+                cell.style.height = '10%';
+                cell.style.top = (i * 10) + '%';
+                cell.style.left = (j * 10) + '%';
+                cell.style.position = 'absolute';
+
+                if(maze[i][j] === 1) {
+                    cell.style.backgroundColor = 'black';
+                    cell.className = 'wall';
+                }
+
+                document.getElementById('maze').appendChild(cell);
+            }
+        }
+
+        document.getElementById('player1').style.top = (player1Pos.y * 10) + '%';
+        document.getElementById('player1').style.left = (player1Pos.x * 10) + '%';
+        document.getElementById('player2').style.top = (player2Pos.y * 10) + '%';
+        document.getElementById('player2').style.left = (player2Pos.x * 10) + '%';
+        document.getElementById('exit').style.top = (exitPos.y * 10) + '%';
+        document.getElementById('exit').style.left = (exitPos.x * 10) + '%';
+
+        window.addEventListener('keydown', function(e) {
+            var nextPos1 = { x: player1Pos.x, y: player1Pos.y };
+            var nextPos2 = { x: player2Pos.x, y: player2Pos.y };
+
+            switch(e.key) {
+                case 'w':
+                    nextPos1.y -= 1;
+                    break;
+                case 's':
+                    nextPos1.y += 1;
+                    break;
+                case 'a':
+                    nextPos1.x -= 1;
+                    break;
+                case 'd':
+                    nextPos1.x += 1;
+                    break;
+                case 'ArrowUp':
+                    nextPos2.y -= 1;
+                    break;
+                case 'ArrowDown':
+                    nextPos2.y += 1;
+                    break;
+                case 'ArrowLeft':
+                    nextPos2.x -= 1;
+                    break;
+                case 'ArrowRight':
+                    nextPos2.x += 1;
+                    break;
+            }
+
+            if(nextPos1.y >= 0 && nextPos1.y < maze.length && nextPos1.x >= 0 && nextPos1.x < maze[0].length && (maze[nextPos1.y][nextPos1.x] !== 1 || document.getElementsByClassName('wall')[nextPos1.y * maze[0].length + nextPos1.x].style.backgroundColor === 'white')) {
+    player1Pos = nextPos1;
+}
+
+if(nextPos2.y >= 0 && nextPos2.y < maze.length && nextPos2.x >= 0 && nextPos2.x < maze[0].length && (maze[nextPos2.y][nextPos2.x] !== 1 || document.getElementsByClassName('wall')[nextPos2.y * maze[0].length + nextPos2.x].style.backgroundColor === 'white')) {
+    player2Pos = nextPos2;
+}
+
+            document.getElementById('player1').style.top = (player1Pos.y * 10) + '%';
+            document.getElementById('player1').style.left = (player1Pos.x * 10) + '%';
+            document.getElementById('player2').style.top = (player2Pos.y * 10) + '%';
+            document.getElementById('player2').style.left = (player2Pos.x * 10) + '%';
+
+            if(player1Pos.x === exitPos.x && player1Pos.y === exitPos.y && player2Pos.x === exitPos.x && player2Pos.y === exitPos.y) {
+                alert('你赢了！');
+                var walls = document.getElementsByClassName('wall');
+                for(var i = 0; i < walls.length; i++) {
+                    walls[i].style.backgroundColor = 'white';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
