@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>游戏入口</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+            margin: 0 10px;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        h2 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>欢迎来到游戏</h2>
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='puzzle.html'">开始游戏</button>
+<button class="button" onclick="window.location.href='gameInstructions.html'">游戏说明</button>
+    </div>
+</body>
+</html>
